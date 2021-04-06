@@ -15,7 +15,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class GuestbookserviceIT {
+public class GuestbookIT {
 
     @Autowired
     MockMvc mockmvc;
@@ -23,10 +23,11 @@ public class GuestbookserviceIT {
     @Autowired
     ObjectMapper objectMapper;
 
-    @Test
-    public void postGuest() {
 
-        guestDTO heroDTO = new guestDTO("Guest1","Comment1");
+    @Test
+    public void postGuest() throws Exception {
+
+        GuestDTO guestDTO  = new GuestDTO("Guest1","Comment1");
 
         mockmvc.perform(post("/guestbook/guest")
                 .content(objectMapper.writeValueAsString(guestDTO))
@@ -34,8 +35,9 @@ public class GuestbookserviceIT {
                 .andExpect(status().isCreated());
 
         mockmvc.perform(get("/guestbook/guest")).andExpect(status().isOk())
-                .andExpect(jsonPath("[0].heroName").value("Batman"))
-                .andExpect(jsonPath("[0].realName").value("Amir"));
+                .andExpect(jsonPath("[0].guestName").value("Guest1"));
+
+
 
 
     }
