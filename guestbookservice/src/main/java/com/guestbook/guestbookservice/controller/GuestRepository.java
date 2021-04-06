@@ -1,13 +1,11 @@
 package com.guestbook.guestbookservice.controller;
 
-import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public class GuestRepository {
-    public GuestEntity save(Object any) {
-        return null;
-    }
+@Repository
+public interface GuestRepository extends JpaRepository<GuestEntity, Long>{
 
-    public List<GuestEntity> findAll() {
-        return null;
-    }
+        GuestEntity findByName(String name);
+
 }

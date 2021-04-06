@@ -15,7 +15,6 @@ public class GuestService {
         GuestEntity saveEntity = new GuestEntity(guestDTO.getName(),guestDTO.getComment());
         GuestEntity saved = guestRepository.save(saveEntity);
         return new GuestDTO(saved.getName(),saved.getComment());
-
     }
 
     public List<GuestDTO> getAll() {

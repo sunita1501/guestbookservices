@@ -14,6 +14,4 @@ public class GuestDTO {
     String name;
     String comment;
 
-    public void collect(Collector<Object,?, List<Object>> toList) {
-    }
 }
