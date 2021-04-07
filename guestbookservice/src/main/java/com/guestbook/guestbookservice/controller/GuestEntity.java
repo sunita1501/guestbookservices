@@ -16,6 +16,7 @@ import javax.persistence.Id;
 public class GuestEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    Long Id;
     String name;
     String comment;
 
