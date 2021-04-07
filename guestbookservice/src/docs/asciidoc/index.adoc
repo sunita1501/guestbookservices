@@ -1,0 +1,15 @@
+Guest
+
+.request
+include::{snippets}/Guest/http-request.adoc[]
+
+.response
+include::{snippets}/Guest/http-response.adoc[]
+
+AddGuest
+
+.request
+include::{snippets}/AddGuest/http-request.adoc[]
+
+.response
+include::{snippets}/AddGuest/http-response.adoc[]

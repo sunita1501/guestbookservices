@@ -9,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.beans.BeanProperty;
+
 
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
@@ -37,7 +37,7 @@ public class GuestbookIT {
                 .content(objectMapper.writeValueAsString(guestDTO))
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isCreated())
-                .andDo(document("AddGuest"));;
+                .andDo(document("AddGuest"));
 
     }
 
@@ -49,11 +49,12 @@ public class GuestbookIT {
         mockmvc.perform(post("/guest")
                 .content(objectMapper.writeValueAsString(guestDTO))
                 .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isCreated());
+                .andExpect(status().isCreated())
+                .andDo(document("AddGuest"));
 
         mockmvc.perform(get("/guest")).andExpect(status().isOk())
                 .andExpect(jsonPath("[0].name").value("Guest1"))
-                .andDo(document("Books", responseFields(
+                .andDo(document("Guest", responseFields(
                         fieldWithPath("[0].name").description("First Guest"),
                         fieldWithPath("[0].comment").description("First Guest Comment"))));
     }
