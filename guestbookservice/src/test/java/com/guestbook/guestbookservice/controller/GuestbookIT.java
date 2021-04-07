@@ -36,7 +36,8 @@ public class GuestbookIT {
         mockmvc.perform(post("/guest")
                 .content(objectMapper.writeValueAsString(guestDTO))
                 .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isCreated());
+                .andExpect(status().isCreated())
+                .andDo(document("AddGuest"));;
 
     }
 
