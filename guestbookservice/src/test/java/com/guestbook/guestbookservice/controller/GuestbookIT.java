@@ -38,7 +38,6 @@ public class GuestbookIT {
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isCreated())
                 .andDo(document("AddGuest"));
-
     }
 
     @Test
