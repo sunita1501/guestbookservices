@@ -5,3 +5,35 @@ docker network create --driver bridge networkSunMak
 docker run --name DockerGuestBook_postgres  --network networkSunMak -e POSTGRES_PASSWORD=open02 -e POSTGRES_DB=docker_guest_database -d postgres
 
 docker run --name DockerGuestBookAPI --network networkSunMak -e PORT=8080 -e SPRING_PROFILES_ACTIVE=docker -p 9000:8080 -d  guest_service:dev
+
+docker network ls
+
+docker network create --driver bridge networkSunMak
+
+docker run --name DockerGuestBook_postgres  --network networkSunMak -e POSTGRES_PASSWORD=open02 -e POSTGRES_DB=docker_guest_
+database -d postgres
+
+docker build -t docker run --name DockerGuestBook_postgres  --network networkSunMak -e POSTGRES_PASSWORD=open02 -e POSTGRES_
+DB=docker_guest_database -d postgres
+
+docker build -t guest_service:dev .
+
+docker run --name DockerGuestBookAPI --network networkSunMak -e PORT=8080 -e SPRING_PROFILES_ACTIVE=docker -p 9000:8080 -d
+guest_service:dev
+
+docker logs -f DockerGuestBookAPI
+
+heroku git:remote -a guestbookservices
+
+heroku login
+
+docker ps
+
+heroku DockerGuestBookAPI:login
+
+heroku container:login
+
+heroku container:push web
+
+https://guestbookservices.herokuapp.com/guest
+
